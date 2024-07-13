@@ -690,7 +690,7 @@ def Rips_Filter_Bifiltration(filtered_points, radius_range, palette="Viridis256"
     rips_slider = Slider(start=radius_range[0], end=radius_range[1], value=(radius_range[0] + radius_range[1]) / 2,
                          step=(radius_range[1] - radius_range[0]) / 100, title="Rips",
                          orientation="horizontal",
-                         height=300,
+                         width=300,
                          direction="ltr",
                          margin=(10, 40, 10, 60)
                          )
