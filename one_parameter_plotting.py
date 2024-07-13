@@ -36,8 +36,8 @@ def Rips_Filtration(points, radius_range):
                              )
 
     filt_plot = figure(title='Filtration',
-                       plot_width=300,
-                       plot_height=300,
+                       width=300,
+                       height=300,
                        aspect_ratio="auto",
                        height_policy="auto",
                        min_border=0,
@@ -63,8 +63,8 @@ def Rips_Filtration(points, radius_range):
     """)
 
     barcode_plot = figure(title='Barcode',
-                          plot_width=800,
-                          plot_height=200,
+                          width=800,
+                          height=200,
                           min_border=0,
                           aspect_ratio="auto",
                           height_policy="auto",
@@ -73,8 +73,8 @@ def Rips_Filtration(points, radius_range):
                           x_range=(radius_range[0], radius_range[1]))
 
     lscape_plot = figure(title='Landscapes',
-                         plot_width=800,
-                         plot_height=200,
+                         width=800,
+                         height=200,
                          min_border=0,
                          aspect_ratio="auto",
                          height_policy="auto",

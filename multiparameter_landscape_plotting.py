@@ -563,8 +563,8 @@ def compare_multiparameter_landscape_samples(Samples: List[List[multiparameter_l
         mean_landscape_plots.append(row_of_plots)
         for plot in row_of_plots.children:
             plot.add_glyph(rectangle_source, rect)
-            plot.plot_height = 250
-            plot.plot_width = 250
+            plot.height = 250
+            plot.width = 250
             plot.border_fill_color = colors[s]
             plot.min_border = 15
 
@@ -636,8 +636,8 @@ def Rips_Filter_Bifiltration(filtered_points, radius_range, palette="Viridis256"
                              )
 
     filter_plot = figure(title='Filtration',
-                         plot_width=360,
-                         plot_height=430,
+                         width=360,
+                         height=430,
                          min_border=0,
                          toolbar_location=None,
                          match_aspect=True)
