@@ -12,7 +12,7 @@ from typing import List, Tuple
 """An interface for rivet_console, using the command line
 and subprocesses."""
 
-rivet_executable = '<rivet_console location>'
+rivet_executable = '../rivet/rivet_console'
 
 
 class PointCloud:
