@@ -11,8 +11,8 @@ from bokeh.plotting import figure
 
 from scipy.spatial import distance_matrix
 
-from multiparameter_landscape import multiparameter_landscape
-from helper_functions import normalise_filter, Compute_Rivet
+from .multiparameter_landscape import multiparameter_landscape
+from .helper_functions import normalise_filter, Compute_Rivet
 
 
 def compute_mean_landscape(Sample: List[multiparameter_landscape]):

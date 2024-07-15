@@ -1,6 +1,7 @@
 import numpy as np
-from one_parameter_classes import Bar, Barcode, Landscape, Landscapes
+from .one_parameter_classes import Bar, Barcode, Landscape, Landscapes
 import rivet
+from .rivet import compute_file
 from scipy.spatial import distance_matrix
 
 
@@ -103,7 +104,7 @@ def pop(array, row):
 def Compute_Rivet(filtered_points, dim=1, resolution=20, RipsMax=1, description='default_description'):
     ambient_dim = filtered_points.shape[1] - 1
     filename = write_sample(filtered_points, RipsMax, description, ambient_dim)
-    computed_file_path = rivet.compute_file(filename,
+    computed_file_path = compute_file(filename,
                                             homology=dim,
                                             x=resolution,
                                             y=resolution)

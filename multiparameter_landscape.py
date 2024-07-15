@@ -1,10 +1,11 @@
 from numpy.core.multiarray import ndarray
-from rivet import Bounds
 import rivet
+from .rivet import barcodes as Bar
+from .rivet import Bounds
 import numpy as np
-import rank
-from matching_distance import find_offsets
-from one_parameter_classes import landscape
+from .rank import *
+from .matching_distance import find_offsets
+from .one_parameter_classes import landscape
 
 
 class multiparameter_landscape(object):
@@ -94,7 +95,7 @@ class multiparameter_landscape(object):
         return slices
 
     def compute_landscape_barcodes(self):
-        barcodes = rivet.barcodes(self.computed_data, self.find_slices())
+        barcodes = Bar(self.computed_data, self.find_slices())
         return barcodes
 
     def get_parameter_step_size(self):
@@ -105,20 +106,20 @@ class multiparameter_landscape(object):
     def get_1D_xvalues_range(self, antidiagonal_index):
         k = antidiagonal_index
         if k < min(self.number_of_ysteps(), self.number_of_xsteps()):
-            x_values_range = [rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+            x_values_range = [find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]),
-                              rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+                              find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]) +
                               self.number_of_xsteps() * self.get_parameter_step_size()]
             return x_values_range
 
         elif (k >= self.number_of_xsteps()) and (k < self.number_of_ysteps()):
-            x_values_range = [rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+            x_values_range = [find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]),
-                              rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+                              find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]) + (
                                   self.number_of_xsteps()) *
@@ -126,11 +127,11 @@ class multiparameter_landscape(object):
             return x_values_range
 
         elif (k >= self.number_of_ysteps()) and (k < self.number_of_xsteps()):
-            x_values_range = [rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+            x_values_range = [find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]) - (
                                       k + 1 - self.number_of_ysteps()) * self.get_parameter_step_size(),
-                              rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+                              find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]) + (
                                       self.number_of_xsteps() +
@@ -139,12 +140,12 @@ class multiparameter_landscape(object):
             return x_values_range
 
         elif k >= max(self.number_of_xsteps(), self.number_of_ysteps()):
-            x_values_range = [rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+            x_values_range = [find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]) - (
                                       k + 1 - self.number_of_ysteps()) *
                               self.get_parameter_step_size(),
-                              rank.find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
+                              find_parameter_of_point_on_line(self.get_barcodes_slopes()[k],
                                                                    self.get_offsets()[k],
                                                                    self.get_lower_boundary_points()[k, :]) + (
                                       self.number_of_xsteps() - k - 1 +

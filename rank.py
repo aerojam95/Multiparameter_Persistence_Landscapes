@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import rivet
-import matching_distance
+from .matching_distance import *
 
 
 def find_parameters(slopes, offsets, points):
