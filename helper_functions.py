@@ -101,13 +101,14 @@ def pop(array, row):
     return poppedrow, array
 
 
-def Compute_Rivet(filtered_points, dim=1, resolution=20, RipsMax=1, description='default_description'):
+def Compute_Rivet(filtered_points, dim=1, resolution=20, RipsMax=1, threads=1, description='default_description'):
     ambient_dim = filtered_points.shape[1] - 1
     filename = write_sample(filtered_points, RipsMax, description, ambient_dim)
     computed_file_path = compute_file(filename,
                                             homology=dim,
                                             x=resolution,
-                                            y=resolution)
+                                            y=resolution,
+                                            threads=threads)
     with open(computed_file_path, 'rb') as f:
         computed_data = f.read()
     return computed_data
