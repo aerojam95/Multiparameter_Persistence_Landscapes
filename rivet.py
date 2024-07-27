@@ -224,11 +224,11 @@ def _rivet_name(base, homology, x, y):
     return output_name
 
 
-def compute_file(input_name, output_name=None, homology=0, x=0, y=0):
+def compute_file(input_name, output_name=None, homology=0, x=0, y=0, threads=1):
     if not output_name:
         output_name = _rivet_name(input_name, homology, x, y)
-    cmd = "%s %s %s -H %d -x %d -y %d -f msgpack" % \
-          (rivet_executable, input_name, output_name, homology, x, y)
+    cmd = "%s %s %s -H %d -x %d -y %d --num_threads %d -f msgpack" % \
+          (rivet_executable, input_name, output_name, homology, x, y, threads)
     subprocess.check_output(shlex.split(cmd))
     return output_name
 
