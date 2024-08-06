@@ -23,7 +23,7 @@ def sample_circle_disc(alpha, number_of_points, radius=1, centre=None):
 
 def normalise_pointcloud(pts):
     pts = pts - np.mean(pts, axis=0)
-    variance = np.multiply(pts, pts).sum() / pts.shape[0]
+    variance = np.multiply(pts, pts).sum() / (pts.shape[0] - 1)
     pts = pts / np.sqrt(variance)
     return pts
 
