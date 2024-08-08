@@ -1,6 +1,6 @@
 import numpy as np
 
-import hera
+from .hera import *
 import rivet
 
 
